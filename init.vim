@@ -14,6 +14,8 @@ if dein#load_state('C:\Users\llyyr\.cache\dein')
   call dein#add('vim-airline/vim-airline')
   call dein#add('taigacute/gruvbox9')
   call dein#add('Yggdroot/indentLine')
+  call dein#add('mbbill/undotree')
+  call dein#add('Shougo/neopairs.vim')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
@@ -31,7 +33,7 @@ endif
 let mapleader = ","
 
 " Use +/* clipboard registers
-set clipboard=unnamed, unnamedplus
+set clipboard=unnamed,unnamedplus
 
 " Turn on the Wild menu
 set wildmenu
@@ -255,23 +257,6 @@ endif
 
 
 
-""" Parenthesis/brackets
-vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-vnoremap $q <esc>`>a'<esc>`<i'<esc>
-vnoremap $e <esc>`>a"<esc>`<i"<esc>
-
-" Map auto complete of (, ", ', [
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $q ''<esc>i
-inoremap $e ""<esc>i
-"""
-
 
 
 """ Turn persistent undo on, so that you can undo even when you close a buffer/VIM
@@ -329,12 +314,21 @@ function! s:defx_my_settings() abort
 endfunction
 
 call defx#custom#option('_', {
-      \ 'winwidth': 30,
-      \ 'split': 'vertical',
-      \ 'direction': 'rightbelow',
-      \ 'show_ignored_files': 0,
-      \ 'buffer_name': '',
-      \ 'toggle': 1,
-      \ 'resume': 1
-      \ })
+    \ 'winwidth': 30,
+    \ 'split': 'vertical',
+    \ 'direction': 'rightbelow',
+    \ 'show_ignored_files': 0,
+    \ 'buffer_name': '',
+    \ 'toggle': 1,
+    \ 'resume': 1
+    \ })
+
+
+" Undotree
+noremap <Leader>u :UndotreeToggle<CR>
+set undodir=C:\Users\llyyr\.cache\undo
+set undofile
+au BufNewFile,BufRead /tmp/* setl noundofile
+let g:undotree_WindowLayout=2
+let g:undotree_SetFocusWhenToggle=1
 """
