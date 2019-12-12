@@ -15,7 +15,7 @@ if dein#load_state('C:\Users\llyyr\.cache\dein')
   call dein#add('taigacute/gruvbox9')
   call dein#add('Yggdroot/indentLine')
   call dein#add('mbbill/undotree')
-  call dein#add('Shougo/neopairs.vim')
+  call dein#add('jiangmiao/auto-pairs')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
@@ -63,9 +63,6 @@ set lazyredraw
 
 " For regular expressions turn magic on
 set magic
-
-" Show matching brackets when text indicator is over them
-set showmatch 
 
 " No annoying sound on errors
 set noerrorbells
@@ -254,8 +251,6 @@ if has("gui_running")
 endif
 
 """
-
-
 
 
 
