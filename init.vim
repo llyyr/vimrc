@@ -1,5 +1,8 @@
 set nocompatible
 
+" These reduce ~50ms startup time
+let g:python3_host_prog = "C:/Python37/python3.exe"
+let g:python_host_prog = "C:/Python27/python2.exe"
 
 
 """ Init plugins with dein
@@ -234,10 +237,22 @@ endfunction
 syntax enable
 
 " Display true colors in the terminal
+set t_8f=\[[38;2;%lu;%lu;%lum
+set t_8b=\[[48;2;%lu;%lu;%lum
 set termguicolors
 
 " Set background
 set background=dark
+
+" gruvbox settings, these need to be set before colorscheme
+" gruvbox syntax colors based on filetype
+let g:gruvbox_filetype_hi_groups = 1
+
+" gruvbox highlighting based on plugin
+let g:gruvbox_plugin_hi_groups = 1
+
+" gruvbox transparent background
+let g:gruvbox_transp_bg = 1
 
 " Set colorscheme (gruvbox9, gruvbox9_hard, gruvbox9_soft available)
 colorscheme gruvbox9_hard
@@ -265,20 +280,14 @@ endif
 
 
 """ Plugins
-" Start up deoplete on start
-let g:deoplete#enable_at_startup = 1
+" Disable deoplete on startup
+let g:deoplete#enable_at_startup = 0
+
+" Enable it when entering insert mode
+autocmd InsertEnter * call deoplete#enable()
 
 " Enable tabline
 let g:airline#extensions#tabline#enabled = 1
-
-" gruvbox syntax colors based on filetype
-let g:gruvbox_filetype_hi_groups = 1
-
-" gruvbox highlighting based on plugin
-let g:gruvbox_plugin_hi_groups = 1
-
-" gruvbox transparent background
-let g:gruvbox_transp_bg = 1
 
 """ Defx
 nnoremap <silent> <leader>e :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()`<CR>
