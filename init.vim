@@ -1,7 +1,7 @@
 set nocompatible
 
 " These reduce ~50ms startup time
-let g:python3_host_prog = "C:/Python37/python3.exe"
+let g:python3_host_prog = "C:/Python38/python.exe"
 let g:python_host_prog = "C:/Python27/python2.exe"
 
 
@@ -15,7 +15,9 @@ if dein#load_state('C:\Users\llyyr\.cache\dein')
   call dein#add('Shougo/deoplete.nvim')
   "call dein#add('Shougo/denite.nvim')
   call dein#add('Shougo/Defx.nvim')
-  call dein#add('vim-airline/vim-airline')
+  "call dein#add('vim-airline/vim-airline')
+  call dein#add('glepnir/spaceline.vim')
+  call dein#add('ryanoasis/vim-devicons')
   call dein#add('taigacute/gruvbox9')
   call dein#add('Yggdroot/indentLine')
   call dein#add('mbbill/undotree')
@@ -287,7 +289,8 @@ let g:deoplete#enable_at_startup = 0
 autocmd InsertEnter * call deoplete#enable()
 
 " Enable tabline
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline_powerline_fonts = 1
 
 """ Defx
 nnoremap <silent> <leader>e :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()`<CR>
